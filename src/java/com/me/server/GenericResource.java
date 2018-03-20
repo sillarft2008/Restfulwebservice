@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package text;
+package com.me.server;
 
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -49,7 +49,7 @@ public class GenericResource {
     @PUT
     @Path("getLetterCount")
     @Consumes(MediaType.APPLICATION_XML)
-    public int getLetterCount(String content) {
+    public String getLetterCount(String content) {
         System.out.println("getLetterCount:"+content);
         
         int count = 0;
@@ -60,13 +60,13 @@ public class GenericResource {
             }      
         }
         System.out.println("getLetterCount:"+count);
-         return count;
+         return Integer.toString(count);
     }
     
     @PUT
     @Path("getWordCount")
     @Consumes(MediaType.APPLICATION_XML)
-    public int getWordCount(String content) {
+    public String getWordCount(String content) {
         int count = 0;
         System.out.println("getWordCount:"+content);
         
@@ -76,19 +76,19 @@ public class GenericResource {
             count = count + words.length;
         }
         System.out.println("getWordCount:"+count);
-        return count;
+        return Integer.toString(count);
     }
 
     @PUT
     @Path("getLineCount")
     @Consumes(MediaType.APPLICATION_XML)
-    public int getLineCount(String content) {
+    public String getLineCount(String content) {
         System.out.println("getLineCount:"+content);
         
         int count = 0;
         String[] lines = content.split("\\n");
         count = lines.length;
         System.out.println("getLineCount:"+count);
-        return count;
+        return Integer.toString(count);
     }
 }
